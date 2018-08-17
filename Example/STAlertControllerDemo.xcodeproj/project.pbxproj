@@ -188,7 +188,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-STAlertControllerDemo/Pods-STAlertControllerDemo-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-STAlertControllerDemo/Pods-STAlertControllerDemo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/STAlertController/STAlertController.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -197,7 +197,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-STAlertControllerDemo/Pods-STAlertControllerDemo-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-STAlertControllerDemo/Pods-STAlertControllerDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
