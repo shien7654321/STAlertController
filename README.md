@@ -4,9 +4,9 @@
 [![License](https://img.shields.io/cocoapods/l/STAlertController.svg?style=flat)](http://cocoapods.org/pods/STAlertController)
 [![Platform](https://img.shields.io/cocoapods/p/STAlertController.svg?style=flat)](http://cocoapods.org/pods/STAlertController)
 
-## A subclass of UIAlertController.
+## A subclass of UIAlertController that can be presented one by one in a queue
 
-STAlertController is a subclass of UIAlertController that can be presented one by one in a queue.When STAlertController is clicked and disappears, the next STAlertController will be presented.
+STAlertController is a subclass of UIAlertController that can be presented one by one in a queue. When STAlertController is clicked and disappears, the next STAlertController will be presented.
 
 ![STAlertControllerPreview01](https://github.com/shien7654321/STAlertController/raw/master/Preview/STAlertControllerPreview01.gif)
 
