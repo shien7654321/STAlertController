@@ -24,11 +24,11 @@ public class STAlertController: UIAlertController {
 
 public class STAlertAction: UIAlertAction {
     
-    private init(title: String?, style: UIAlertActionStyle, handler: ((UIAlertAction) -> Swift.Void)? = nil) {
+    private init(title: String?, style: UIAlertAction.Style, handler: ((UIAlertAction) -> Swift.Void)? = nil) {
         
     }
     
-    @objc override public class func createAction(title: String?, style: UIAlertActionStyle, handler: ((UIAlertAction) -> Void)? = nil) -> UIAlertAction {
+    @objc override public class func createAction(title: String?, style: UIAlertAction.Style, handler: ((UIAlertAction) -> Void)? = nil) -> UIAlertAction {
         let realHandler: ((UIAlertAction) -> Void) = handler != nil ? { action in
             handler!(action)
             action.alertController?.finishHandler?()
@@ -53,7 +53,7 @@ extension UIAlertAction {
         }
     }
     
-    @objc fileprivate class func createAction(title: String?, style: UIAlertActionStyle, handler: ((UIAlertAction) -> Void)? = nil) -> UIAlertAction {
+    @objc fileprivate class func createAction(title: String?, style: UIAlertAction.Style, handler: ((UIAlertAction) -> Void)? = nil) -> UIAlertAction {
         return UIAlertAction(title: title, style: style, handler: handler)
     }
     

@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "STAlertController"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "A subclass of UIAlertController that can be presented one by one in a queue."
   s.homepage     = "https://github.com/shien7654321/STAlertController"
   s.author       = { "Suta" => "shien7654321@163.com" }
@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.frameworks   = "Foundation", "UIKit"
   s.source_files = "STAlertController/*.{swift}"
   s.compiler_flags = "-fmodules"
-  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4.1' }
+  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4.2' }
   s.description    = <<-DESC
   STAlertController is a subclass of UIAlertController that can be presented one by one in a queue.
                        DESC
