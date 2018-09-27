@@ -18,6 +18,16 @@ public class STAlertController: UIAlertController {
         super.addAction(action)
     }
     
+    override public func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
+        let realCompletion: (() -> Void) = completion != nil ? {
+            completion!()
+            self.finishHandler?()
+            } : {
+                self.finishHandler?()
+        }
+        super.dismiss(animated: flag, completion: realCompletion)
+    }
+    
 }
 
 // MARK: -
@@ -65,10 +75,15 @@ private var kAlertsInfoKey: Void?
 
 extension UIViewController {
     
-    private struct STAlertInfo {
+    private class STAlertInfo {
         
         var alertController: STAlertController
         var completionHandler: (() -> Void)?
+        
+        init(alertController: STAlertController, completionHandler: (() -> Void)?) {
+            self.alertController = alertController
+            self.completionHandler = completionHandler
+        }
         
     }
     
@@ -110,6 +125,7 @@ extension UIViewController {
         let alertInfo = alertInfoArray.first!
         alertInfo.alertController.finishHandler = { [weak self] in
             self?.finishPresentAlert()
+            alertInfo.alertController.finishHandler = nil
         }
         present(alertInfo.alertController, animated: true, completion: alertInfo.completionHandler)
     }
@@ -121,6 +137,28 @@ extension UIViewController {
         alertInfoArray.remove(at: 0)
         alertsInfo = alertInfoArray
         presentNextAlert()
+    }
+    
+    public func dismissAlertController(animated flag: Bool, completion: (() -> Void)? = nil) {
+        if isKind(of: STAlertController.self) {
+            let realCompletion: (() -> Void) = completion != nil ? {
+                completion!()
+                (self as! STAlertController).finishHandler?()
+                } : {
+                    (self as! STAlertController).finishHandler?()
+            }
+            dismiss(animated: flag, completion: realCompletion)
+        } else if let alertController = presentedViewController, alertController.isKind(of: STAlertController.self) {
+            let realCompletion: (() -> Void) = completion != nil ? {
+                completion!()
+                (alertController as! STAlertController).finishHandler?()
+                } : {
+                    (alertController as! STAlertController).finishHandler?()
+            }
+            dismiss(animated: flag, completion: realCompletion)
+        } else {
+            dismiss(animated: flag, completion: completion)
+        }
     }
     
 }

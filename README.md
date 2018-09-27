@@ -69,6 +69,14 @@ At last, use the following function to present the STAlertController on an insta
 presentAlertController(alertController)
 ```
 
+### DismissAlertController
+
+Of course, the following methods can also be used to dimiss the STAlertController:
+
+```swift
+dismissAlertController(animated: true)
+```
+
 ## Author
 
 Suta, shien7654321@163.com
