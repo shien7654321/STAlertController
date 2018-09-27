@@ -74,7 +74,7 @@ presentAlertController(alertController)
 Of course, the following methods can also be used to dimiss the STAlertController:
 
 ```swift
-dismissAlertController(animated: true)
+dismissAlertController()
 ```
 
 ## Author
