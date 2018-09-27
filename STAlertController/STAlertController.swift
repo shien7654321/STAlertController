@@ -139,7 +139,7 @@ extension UIViewController {
         presentNextAlert()
     }
     
-    public func dismissAlertController(animated flag: Bool, completion: (() -> Void)? = nil) {
+    public func dismissAlertController(_ completion: (() -> Void)? = nil) {
         if isKind(of: STAlertController.self) {
             let realCompletion: (() -> Void) = completion != nil ? {
                 completion!()
@@ -147,7 +147,7 @@ extension UIViewController {
                 } : {
                     (self as! STAlertController).finishHandler?()
             }
-            dismiss(animated: flag, completion: realCompletion)
+            dismiss(animated: true, completion: realCompletion)
         } else if let alertController = presentedViewController, alertController.isKind(of: STAlertController.self) {
             let realCompletion: (() -> Void) = completion != nil ? {
                 completion!()
@@ -155,9 +155,9 @@ extension UIViewController {
                 } : {
                     (alertController as! STAlertController).finishHandler?()
             }
-            dismiss(animated: flag, completion: realCompletion)
+            dismiss(animated: true, completion: realCompletion)
         } else {
-            dismiss(animated: flag, completion: completion)
+            dismiss(animated: true, completion: completion)
         }
     }
     

@@ -26,15 +26,11 @@ class ViewController: UIViewController {
             presentAlertController(alertController) {
                 if alertActionCount == 0 {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-                        alertController.dismissAlertController(animated: true)
+                        alertController.dismissAlertController()
                     })
                 }
             }
         }
-    }
-    
-    override var prefersStatusBarHidden: Bool {
-        return true
     }
     
 }
