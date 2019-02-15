@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "STAlertController"
-  s.version      = "0.0.3"
+  s.version      = "0.0.4"
   s.summary      = "A subclass of UIAlertController that can be presented one by one in a queue."
   s.homepage     = "https://github.com/shien7654321/STAlertController"
   s.author       = { "Suta" => "shien7654321@163.com" }

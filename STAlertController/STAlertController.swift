@@ -72,6 +72,7 @@ extension UIAlertAction {
 // MARK: -
 
 private var kAlertsInfoKey: Void?
+private var kAlertWindowKey: Void?
 
 extension UIViewController {
     
@@ -96,6 +97,15 @@ extension UIViewController {
         }
     }
     
+    private var alertWindow: UIWindow? {
+        get {
+            return objc_getAssociatedObject(self, &kAlertWindowKey) as? UIWindow
+        }
+        set {
+            objc_setAssociatedObject(self, &kAlertWindowKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+    
     public func presentAlertController(_ alertController: STAlertController, completion: (() -> Void)? = nil) {
         let handler = {
             var alertInfoArray = self.alertsInfo != nil ? self.alertsInfo! : [STAlertInfo]()
@@ -116,10 +126,9 @@ extension UIViewController {
     }
     
     private func presentNextAlert() {
-        guard presentedViewController == nil else {
-            return
-        }
         guard let alertInfoArray = alertsInfo, alertInfoArray.count > 0 else {
+            alertWindow?.resignKey()
+            alertWindow = nil
             return
         }
         let alertInfo = alertInfoArray.first!
@@ -127,7 +136,14 @@ extension UIViewController {
             self?.finishPresentAlert()
             alertInfo.alertController.finishHandler = nil
         }
-        present(alertInfo.alertController, animated: true, completion: alertInfo.completionHandler)
+        if alertWindow == nil {
+            alertWindow = UIWindow(frame: UIScreen.main.bounds)
+            alertWindow?.rootViewController = UIViewController()
+            alertWindow?.windowLevel = .alert
+        }
+        alertWindow?.isHidden = false
+        alertWindow?.makeKeyAndVisible()
+        alertWindow?.rootViewController?.present(alertInfo.alertController, animated: true, completion: alertInfo.completionHandler)
     }
     
     private func finishPresentAlert() {
@@ -148,16 +164,16 @@ extension UIViewController {
                     (self as! STAlertController).finishHandler?()
             }
             dismiss(animated: true, completion: realCompletion)
-        } else if let alertController = presentedViewController, alertController.isKind(of: STAlertController.self) {
+        } else if let alertController = alertWindow?.rootViewController?.presentedViewController, alertController.isKind(of: STAlertController.self) {
             let realCompletion: (() -> Void) = completion != nil ? {
                 completion!()
                 (alertController as! STAlertController).finishHandler?()
                 } : {
                     (alertController as! STAlertController).finishHandler?()
             }
-            dismiss(animated: true, completion: realCompletion)
+            alertController.dismiss(animated: true, completion: realCompletion)
         } else {
-            dismiss(animated: true, completion: completion)
+            alertWindow?.rootViewController?.dismiss(animated: true, completion: completion)
         }
     }
     
