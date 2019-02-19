@@ -1,6 +1,6 @@
 # STAlertController
 
-[![Language](https://img.shields.io/badge/language-swift-color.svg?style=flat)](http://cocoapods.org/pods/STAlertController)
+[![Language](https://img.shields.io/badge/language-Swift-limegreen.svg?style=flat)](http://cocoapods.org/pods/STAlertController)
 [![Platform](https://img.shields.io/cocoapods/p/STAlertController.svg?style=flat)](http://cocoapods.org/pods/STAlertController)
 [![Version](https://img.shields.io/cocoapods/v/STAlertController.svg?style=flat)](http://cocoapods.org/pods/STAlertController)
 [![License](https://img.shields.io/cocoapods/l/STAlertController.svg?style=flat)](http://cocoapods.org/pods/STAlertController)
