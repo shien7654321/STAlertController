@@ -15,7 +15,7 @@ STAlertController is a subclass of UIAlertController that can be presented one b
 
 - iOS 8.0 or later
 - ARC
-- Swift 4.2
+- Swift 5.0
 
 ## Installation
 
