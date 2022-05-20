@@ -85,5 +85,5 @@ Suta, shien7654321@163.com
 
 ## License
 
-[MIT]: http://www.opensource.org/licenses/mit-license.php
+[MIT]: https://opensource.org/licenses/MIT
 [MIT license][MIT].
